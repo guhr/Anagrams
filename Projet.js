@@ -8,38 +8,7 @@ for(i=0; i<listeATrier.length; i++) {
   console.log(listeATrier[i]);
 }
 
-
-var estAnagram = function estAnagram(mot1,mot2) {
-  //return Math.random() > 0.5;
-  if (mot1.length != mot2.length) {
-    return false;
-  }
-  return tableauxSontEgaux(mot1,mot2);
-}
-
-var listesAnagram = [];
-var listeNonAnagram = [];
-
-for( var i = 0; i<listeATrier.length; i++) {
-  var motAComparer = listeATrier[i];
-  // listAnagramCourant
-  var listAnagramCourant = [];
-  for(var j = i+1; j<listeATrier.length; j++){
-    var motCandidat = listeATrier[j];
-    if(estAnagram(motAComparer,motCandidat)) {
-      listAnagramCourant.push(motCandidat);
-      // ajouter a listAnagramCourant
-    }
-  }
-  if (listesAnagram.length === 0) { // le tableau est vide
-    listeNonAnagram.push(motAComparer);
-  } else {
-    listAnagramCourant.push(motAComparer);
-  }
-  // ajouter listAnagramCourant dans listesAnagram
-  listesAnagram.push(listAnagramCourant);
-}
-
+// Liste des fonctions
 var contient = function contient(tableau1,tableau2) {
   for(var i=0; i<tableau1.length; i++) {
     if(tableau2.indexOf(tableau1[i]) == -1) {
@@ -75,10 +44,51 @@ var dedoublonage = function dedoublonage(avecDoublons){
   return sansDoublons;
 }
 
-listesAnagram = dedoublonage(listesAnagram);
 
+var estAnagram = function estAnagram(mot1,mot2) {
+  //return Math.random() > 0.5;
+  if (mot1.length != mot2.length) {
+    return false;
+  }
+  return tableauxSontEgaux(mot1,mot2);
+}
+
+// Corps du programme
+
+var listesAnagram = [];
+var listeNonAnagram = [];
+
+for( var i = 0; i<listeATrier.length; i++) {
+  var motAComparer = listeATrier[i];
+  // listAnagramCourant
+  var listAnagramCourant = [];
+  for(var j = i+1; j<listeATrier.length; j++){
+    var motCandidat = listeATrier[j];
+    if(estAnagram(motAComparer,motCandidat)) {
+      listAnagramCourant.push(motCandidat);
+      // ajouter a listAnagramCourant
+    }
+  }
+  if (listAnagramCourant.length == 0) { // le tableau est vide
+    listeNonAnagram.push(motAComparer);
+  } else {
+    listAnagramCourant.push(motAComparer);
+  }
+  // ajouter listAnagramCourant dans listesAnagram
+  listesAnagram.push(listAnagramCourant);
+}
+
+
+//listesAnagram = dedoublonage(listesAnagram);
+
+// Affichage du résultat
 
 var be_anagram = "sont anagrammes.";
+var non_anagram = " n'a pas d'anagrammes.";
+
+console.log(" ");
+console.log("----------------------------------------------------");
+console.log(" ");
 
 var afficheResult = function afficheResult(anagrams){
   var result_1 = "";
@@ -91,4 +101,21 @@ var afficheResult = function afficheResult(anagrams){
 
 for (var i=0; i<listesAnagram.length; i++) {
   afficheResult(listesAnagram[i]);
+}
+
+console.log(" ");
+console.log("----------------------------------------------------");
+console.log(" ");
+
+var afficheNonAna = function afficheNonAna(nonAnagram) {
+  var result_2 = "";
+  for(var i=0; i<nonAnagram.length; i++) {
+    result_2 += nonAnagram[i];
+  }
+  result_2 += non_anagram;
+  console.log(result_2);
+}
+
+for (var i=0; i<listeNonAnagram.length; i++) {
+  afficheNonAna(listeNonAnagram[i]);
 }
