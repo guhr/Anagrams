@@ -31,6 +31,17 @@ var estInclusDans = function estInclusDans(element, tableau) {
   return false;
 }
 
+var estInclusAuFond = function estInclusAuFond(element, tableauDeTableaux) {
+  for (var i=0; i<tableauDeTableaux.length; i++) {
+    for (varj=0; j<tableauDeTableaux[i].length; j++) {
+      if (element === tableauDeTableaux[i][j]) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 var dedoublonage = function dedoublonage(avecDoublons){
   var sansDoublons = [];
   for (var i=0; i<avecDoublons.length; i++) {
@@ -62,7 +73,7 @@ for( var i = 0; i<listeATrier.length; i++) {
   var motAComparer = listeATrier[i];
   // listAnagramCourant
   var listAnagramCourant = [];
-  if( estInclusDans(motAComparer,listesAnagram) || estInclusDans(motAComparer,listeNonAnagram) ) {
+  if( estInclusAuFond(motAComparer,listesAnagram) || estInclusAuFond(motAComparer,listeNonAnagram) ) {
     // le pb c'est que listesAnagram est un tableau de tableaux et je dois verifier les mots à l'intérieur
   } else {
     for(var j = i+1; j<listeATrier.length; j++){
