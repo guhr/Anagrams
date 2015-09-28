@@ -62,20 +62,24 @@ for( var i = 0; i<listeATrier.length; i++) {
   var motAComparer = listeATrier[i];
   // listAnagramCourant
   var listAnagramCourant = [];
-  for(var j = i+1; j<listeATrier.length; j++){
-    var motCandidat = listeATrier[j];
-    if(estAnagram(motAComparer,motCandidat)) {
-      listAnagramCourant.push(motCandidat);
-      // ajouter a listAnagramCourant
-    }
-  }
-  if (listAnagramCourant.length == 0) { // le tableau est vide
-    listeNonAnagram.push(motAComparer);
+  if( estInclusDans(motAComparer,listesAnagram) || estInclusDans(motAComparer,listeNonAnagram) ) {
+    // le pb c'est que listesAnagram est un tableau de tableaux et je dois verifier les mots à l'intérieur
   } else {
-    listAnagramCourant.push(motAComparer);
+    for(var j = i+1; j<listeATrier.length; j++){
+      var motCandidat = listeATrier[j];
+      if(estAnagram(motAComparer,motCandidat)) {
+        listAnagramCourant.push(motCandidat);
+        // ajouter a listAnagramCourant
+      }
+    }
+    if (listAnagramCourant.length == 0) { // le tableau est vide
+      listeNonAnagram.push(motAComparer);
+    } else {
+      listAnagramCourant.push(motAComparer);
+    }
+    // ajouter listAnagramCourant dans listesAnagram
+    listesAnagram.push(listAnagramCourant);
   }
-  // ajouter listAnagramCourant dans listesAnagram
-  listesAnagram.push(listAnagramCourant);
 }
 
 
