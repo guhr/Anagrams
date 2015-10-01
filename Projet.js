@@ -1,12 +1,25 @@
-var listeATrier = ["chien","niche","chine","herp","table","derp","balte"];
+//var listeATrier = ["chien","niche","chine","herp","table","derp","balte"];
+
+//Ajouter une fonctionalié où l'utilisateur entre sa propre liste d'anagrammes
+var listeATrier = [];
+var nbMots = prompt("Combien avez-vous de mots à comparer ?");
+
+for(var i=0; i<(nbMots-1); i++) {
+  var j = i - 1;
+  var listeATrier[i] = prompt("Mot "+ j +" " );
+}
+
+console.log(" ");
+console.log("----------------------------------------------------");
+console.log(" ");
 
 // On affiche les Mots que l'on va trier
-
 console.log("Nous allons trouver les anagrammes parmis les mots suivant:");
 
 for(i=0; i<listeATrier.length; i++) {
   console.log(listeATrier[i]);
 }
+
 
 // Liste des fonctions
 var contient = function contient(tableau1,tableau2) {
