@@ -89,12 +89,16 @@ for( var i = 0; i<listeATrier.length; i++) {
       listAnagramCourant.push(motAComparer);
     }
     // ajouter listAnagramCourant dans listesAnagram
+    if (!listAnagramCourant[0] ) {
+      //console.log("bite");
+    } else {
     listesAnagram.push(listAnagramCourant);
+    }
   }
 }
 
 
-listesAnagram = dedoublonage(listesAnagram);
+//listesAnagram = dedoublonage(listesAnagram);
 
 // Affichage du résultat
 
