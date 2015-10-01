@@ -33,7 +33,7 @@ var estInclusDans = function estInclusDans(element, tableau) {
 
 var estInclusAuFond = function estInclusAuFond(element, tableauDeTableaux) {
   for (var i=0; i<tableauDeTableaux.length; i++) {
-    for (varj=0; j<tableauDeTableaux[i].length; j++) {
+    for (var j=0; j<tableauDeTableaux[i].length; j++) {
       if (element === tableauDeTableaux[i][j]) {
         return true;
       }
@@ -94,7 +94,7 @@ for( var i = 0; i<listeATrier.length; i++) {
 }
 
 
-//listesAnagram = dedoublonage(listesAnagram);
+listesAnagram = dedoublonage(listesAnagram);
 
 // Affichage du résultat
 
